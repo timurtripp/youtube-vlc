@@ -4,7 +4,7 @@ I couldn't find an easy way to open a YouTube video in VLC, in 1080p or 4K, with
 
 youtube-vlc allows playback of 1080p or 4K YouTube videos in VLC at full quality using youtube-dl, much better than the 720p version you get when opening a YouTube URL through the VLC interface. VLC v3 is recommended to avoid playback issues present in v2. To keep the script lightweight, no metadata is passed to VLC except the video title.
 
-youtube-vlc2 behaves the same but prioritizes MP4/M4A, which should help with avoiding the seeking/reply issues sometimes present in VLC, and achieve better playback performance on older hardware. The quality is usually capped at 1080p (may be 720p for some videos) because 4K is encoded as VP9 by YouTube, so this is equivalent to watching YouTube in Safari on a Mac.
+youtube-vlc2 behaves the same but prioritizes MP4/M4A, which should help with avoiding the seeking/replay issues sometimes present in VLC, and achieve better playback performance on older hardware. The quality is usually capped at 1080p (may be 720p for some videos) because 4K is encoded as VP9 by YouTube, so this is equivalent to watching YouTube in Safari on a Mac.
 
 youtube-qt is a bonus script for Mac users that allows YouTube playback in the built-in Quicktime Player. This has a caveat, as the MAX quality for most YouTube videos will be the 720p version, due to the limitations of Quicktime Player and codecs used by YouTube. However, some livestreams may open in 1080p by default.
 
@@ -17,6 +17,8 @@ youtube-dl download and readme can be found [here](https://github.com/ytdl-org/y
 Because these are BASH scripts and youtube-dl is written in Python 2.6, the latest OS isn't necessary.
 
 MacOS: Leopard 10.5.8 (Intel or PowerPC) or later and Quicktime 7 or later (youtube-qt), Lion 10.7.5 or later and VLC 3.0 or later (youtube-vlc and youtube-vlc2). Linux: VLC 3.0 or later (youtube-vlc and youtube-vlc2). The latest version of youtube-dl is required in all cases.
+
+Later versions of VLC 2 may be able to play some videos, but compatibility is not guarenteed.
 
 ### Installation
 
