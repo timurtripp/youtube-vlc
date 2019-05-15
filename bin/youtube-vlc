@@ -1,0 +1,39 @@
+#!/bin/bash
+
+MACOS_VLC_PATH="/Applications/VLC.app/Contents/MacOS/VLC" # This is the default VLC command in MacOS.
+LINUX_VLC_PATH="vlc" # This is the default VLC command in Linux.
+YOUTUBE_DL_PATH="youtube-dl" # This is the default youtube-dl command in both MacOS and Linux.
+
+if [ "$(uname -s)" = "Darwin" ]; then
+	vlcPath="$MACOS_VLC_PATH"
+else 
+	vlcPath="$LINUX_VLC_PATH"
+fi
+
+youtubeDlCommand="$YOUTUBE_DL_PATH -ge --get-format $*"
+vlcCommand="$vlcPath"
+
+videoTitle=""
+videoURL=""
+audioURL=""
+
+while read -r line; do
+	if [ "$videoTitle" = "" ]; then # -e option prints the title before the first URL.
+		videoTitle="$line"
+	elif [ "$videoURL" = "" ]; then
+		videoURL="$line"
+	elif [ "${line:0:4}" != "http" ]; then # --get-format option prints the video/audio format after the URLs. This can be used as a seperator line.
+		videoTitleParsed=$(printf '%q' "$videoTitle")
+		vlcCommand+=" \"$videoURL\" :meta-title=$videoTitleParsed :input-slave=\"$audioURL\""
+		echo "$videoTitle (format: $line)"
+		videoTitle=""
+		videoURL=""
+		audioURL=""
+	elif [ "$audioURL" = "" ]; then
+		audioURL="$line"
+	fi
+done <<< "$($youtubeDlCommand)" # youtube-dl runs here.
+
+if [ "$vlcCommand" != "$vlcPath" ]; then
+	eval <<< echo "$vlcCommand"
+fi
