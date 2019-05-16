@@ -17,7 +17,6 @@ while read -r line; do
 	elif [ "$videoURL" = "" ]; then
 		videoURL="$line"
 	elif [ "${line:0:4}" != "http" ]; then # --get-format option prints the video/audio format after the URLs. This can be used as a seperator line.
-		videoTitleParsed=$(printf '%q' "$videoTitle")
 		qtCommand+=" \"$videoURL\""
 		echo "$videoTitle (format: $line)"
 		videoTitle=""
