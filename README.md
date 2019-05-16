@@ -6,7 +6,7 @@ youtube-vlc allows playback of 1080p or 4K YouTube videos in VLC at full quality
 
 youtube-vlc2 behaves the same but prioritizes MP4/M4A, which should help with avoiding the seeking/replay issues sometimes present in VLC, and achieve better playback performance on older hardware. The quality is usually capped at 1080p (may be 720p for some videos) because 4K is encoded as VP9 by YouTube, so this is equivalent to watching YouTube in Safari on a Mac.
 
-youtube-qt is a bonus script for Mac users that allows YouTube playback in the built-in Quicktime Player. This has a caveat, as the MAX quality for most YouTube videos will be the 720p version, due to the limitations of Quicktime Player and codecs used by YouTube. However, some livestreams may open in 1080p by default.
+youtube-qt and youtube-qta are bonus scripts for Mac users that allow YouTube playback in the built-in Quicktime Player. youtube-qt enables video playback, but this has a caveat, as the MAX quality for most YouTube videos will be the 720p version, due to the limitations of Quicktime Player and codecs used by YouTube (however, some livestreams may open in 1080p by default). youtube-qta enables playback of the audio only version (no video), which may be more useful in some cases given the 720p limitation of Quicktime playback.
 
 Playback happens on-the-fly, no download is necessary. Any arguments passed to the script will be passed unchecked to youtube-dl, so the same options are avaliable. Be careful though, some arguments might break it, especially any that change the output.
 
@@ -14,11 +14,13 @@ youtube-dl download and readme can be found [here](https://github.com/ytdl-org/y
 
 ### Compatibility
 
-Because these are BASH scripts and youtube-dl is written in Python 2.6, the latest OS isn't necessary.
+Because these are BASH scripts and youtube-dl is written in Python 2.6, the latest OS isn't necessary. The system requirements below take dependencies into account.
 
-MacOS: Leopard 10.5.8 (Intel or PowerPC) or later and Quicktime 7 or later (youtube-qt), Lion 10.7.5 or later and VLC 3.0 or later (youtube-vlc and youtube-vlc2). Linux: VLC 3.0 or later (youtube-vlc and youtube-vlc2). The latest version of youtube-dl is required in all cases.
+MacOS: Tiger 10.4.11 (Intel or PowerPC) or later and Python 2.6 or later and Quicktime 7 or later (youtube-qt), Lion 10.7.5 or later and VLC 3.0 or later (youtube-vlc and youtube-vlc2).
 
-Later versions of VLC 2 may be able to play some videos, but compatibility is not guarenteed.
+Linux: VLC 3.0 or later (youtube-vlc and youtube-vlc2).
+
+The latest version of youtube-dl is required in all cases. Later versions of VLC 2 may be able to play some videos, but compatibility is not guarenteed.
 
 ### Installation
 
